@@ -9,17 +9,26 @@
     html, body {
       padding: 0;
       margin: 0;
+      background: #171717
     }
 
+    .images {
+      font-size: 0;
+    }
     .image {
       display: inline-block;
-      width: 340px;
-      height: 250px;
+      width: 24vw;
+      height: 18vw;
       background: #efefef;
       vertical-align: top;
-      border: 2px solid #cdcdcd;
+      border: none;
       margin: 0;
       cursor: pointer;
+      margin-left: -4px;
+    }
+
+    .image:nth-last-child(-n+5) {
+      width: 19vw
     }
 
     .placeholder, .image.zoom {
@@ -27,9 +36,8 @@
       top: 0;
       left: 0;
       float: left;
-      width: 780px;
-      height: 500px;
-      background: #cdcdcd
+      width: 50vw;
+      height: 35.5vw;
     }
 
     .image.zoom {
@@ -39,17 +47,19 @@
 </head>
 <body>
 
-  <div id="placeholder" class="placeholder"></div>
-  <img src="" id="cam-0" class="image zoom">
-  <img src="" id="cam-1" class="image">
-  <img src="" id="cam-2" class="image">
-  <img src="" id="cam-3" class="image">
-  <img src="" id="cam-4" class="image">
-  <img src="" id="cam-5" class="image">
-  <img src="" id="cam-6" class="image">
-  <img src="" id="cam-7" class="image">
-  <img src="" id="cam-8" class="image">
-  <img src="" id="cam-9" class="image">
+  <div id="images">
+    <div id="placeholder" class="placeholder"></div>
+    <img src="" id="cam-0" class="image zoom">
+    <img src="" id="cam-1" class="image">
+    <img src="" id="cam-2" class="image">
+    <img src="" id="cam-3" class="image">
+    <img src="" id="cam-5" class="image">
+    <img src="" id="cam-4" class="image bottom-row">
+    <img src="" id="cam-6" class="image bottom-row">
+    <img src="" id="cam-7" class="image bottom-row">
+    <img src="" id="cam-8" class="image bottom-row">
+    <img src="" id="cam-9" class="image bottom-row">
+  </div>
 
 </body>
   <script type="text/javascript">

@@ -2,10 +2,42 @@
 <html>
 <head>
   <title>RGT Cameras</title>
-  <link rel="stylesheet" type="text/css" href="./index.css">
+  <style type="text/css">
+    *, *:before, *:after {
+      box-sizing: border-box;
+    }
+    html, body {
+      padding: 0;
+      margin: 0;
+    }
+
+    .image {
+      display: inline-block;
+      width: 340px;
+      height: 250px;
+      background: #efefef;
+      vertical-align: top;
+      border: 2px solid #cdcdcd;
+      margin: 0;
+      cursor: pointer;
+    }
+
+    .placeholder, .image.zoom {
+      position: relative;
+      top: 0;
+      left: 0;
+      float: left;
+      width: 780px;
+      height: 500px;
+      background: #cdcdcd
+    }
+
+    .image.zoom {
+      position: absolute;
+    }
+  </style>
 </head>
 <body>
-
 
   <div id="placeholder" class="placeholder"></div>
   <img src="" id="cam-0" class="image zoom">
@@ -19,8 +51,33 @@
   <img src="" id="cam-8" class="image">
   <img src="" id="cam-9" class="image">
 
-
 </body>
-  <script type="text/javascript" src="./index.js"></script>
+  <script type="text/javascript">
+
+    setImages({init: true});
+
+    function setImages(opts) {
+      var cameraCount = 9;
+      for (var i = 0; i <= cameraCount; i++) {
+        var el = document.getElementById('cam-' + i);
+        if (!el.complete) return;
+
+        el.src = 'http://192.168.1.110/dvr/wwwroot/jstream.cgi?chid=' + i + '&time=' + Date.now();
+
+        if (opts.init) el.addEventListener('click', handleClick);
+      }
+    }
+
+    function handleClick(e) {
+      var active = document.querySelector('.zoom');
+      if (active) active.classList.remove('zoom');
+      e.target.classList.add('zoom');
+    }
+
+    setInterval(function() {
+      setImages({init: false});
+    }, 2000);
+
+  </script>
 
 </html>
